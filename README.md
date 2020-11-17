@@ -15,7 +15,7 @@ Our idea for an app was tool which would allow people to organise volunteers on 
 
 With the experience of our last project in mind we started planning for this by creating an Entity Relationship Diagram. During our previous project the database models had to be updated multiple times as we had not fully considered the relationships; this time with the diagram we could easily see the necessary connections due to having a visual representation. We also had a good idea of which resources would own the data in the one-to-many fields.
 
- ERD HERE
+![](README/Screenshot%202020-11-17%20at%2013.07.50.png)
 
 We followed up with a few wireframes for the main page components. These were mostly simple and ended up being a good representation of the final product, apart from the campaign view page which evolved a lot over time as we continued to add features later in the process.
 
@@ -46,18 +46,18 @@ In the code below, the message content is first split where new lines occur and 
 
 I then wrote some code to scroll the window to any new messages and started working on a simple input component. During the work on the chat component I had also been creating some custom inputs using the Styled Components to get some practice. I had managed to build some simple inputs including a text area; I dropped this into my new chat input and styled the it to have small toolbar along the bottom. This would include a send button and later on an emoji button too. I wrote a small helper function for the chat input so that shift + enter would result in a new line and enter on its own would send the message.
 
-![](README/chat-window.gif)
+![](README/chat-window%202.gif)
 
 ### CREATING A STYLE WITH THEMES
 
 During the work on the chat component I had also been working on some styled inputs to be used across the app. As I was working on these things I had worked out a colour theme (yellow and light pink) and also picked out some alternatives for a dark mode.  This was a really fun feature to add in as I always enjoy its inclusion on websites that I use. The implementation using Styled Components was very straightforward too; I simply defined the variables for each theme in the root component (primary colour, background, accents, etc.) and then passed the information down to all child components using the Theme Provider.
 
-![](README/theme-switching.gif)
+![](README/theme-switching%202.gif)
 
 Setting up these base variables and simple components like the inputs was perhaps the major win for me in this project. It gave the app consistency and the reusability sped up work when building more complex components considerably; a lot of the UI work towards the end of the project felt as simple as clicking Lego pieces together.
 It  also opened my eyes to the difficulty of designing reusable components and will be something that I will continue to focus on in the future.
 
-![](README/scheduler.gif)
+![](README/scheduler%202.gif)
 
 As we moved into the second half of the week, my partner moved over to working with me on the front end as the back end work was mostly done. Having made these reusable components really paid off here as it allowed them to jump into design work without having to worry about consistency or needing to be familiar with all of the  inner workings of the pieces.
 
@@ -79,13 +79,13 @@ The first element that I built was the user side that could be accessed on a use
 
 Having set the data on the users, I then pulled the data for all volunteers on a project into the coordinator view; this allowed me to display all of a users relevant data in a card format.
 
-![](README/Screenshot%202020-11-17%20at%2012.40.59.png)
+![](README/Screenshot%202020-11-17%20at%2012.40.59%202.png)
 
 As you can see in the image there is a select button on the cards. This allows the coordinator to select any number of users and then create a new chat room with them. This allowed for all of the desired functionality but I wanted to allow coordinators to find the relevant users in a simple manner.
 
 Using the same components that were used for setting the schedule and skills on the profile page I allowed the coordinators to select any number of time slots and skills in order to filter the user list. This also included functionality to filter using strict rules or not; this could be useful in the situation that they would want to find all volunteers available on the weekend without them each needing to be available on both days.
 
-![](README/volunteer-filter.gif)
+![](README/volunteer-filter%202.gif)
 
 Another component was added to the project view at this point for a community noticeboard. This was intended to display more important messages that would not be suited to chat due to new messages burying the information. The coordinator view of the page differed here only in showing the input for sending new messages and the regular volunteer view would be read only.
 
