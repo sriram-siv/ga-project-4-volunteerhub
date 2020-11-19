@@ -3,7 +3,7 @@
 
 In a team of 2, create a full stack app using React, Django and PostgreSQL with a design and functionality of our own choosing.
 
-In collaboration with [Don Graham](github.com/dongra02)
+In collaboration with [Don Graham](https://github.com/dongra02)
 
 ### TIMEFRAME
 
@@ -28,7 +28,7 @@ Our idea for an app was tool which would allow people to organise volunteers on 
 
 With the experience of our last project in mind we started planning for this by creating an Entity Relationship Diagram. During our previous project the database models had to be updated multiple times as we had not fully considered the relationships; this time with the diagram we could easily see the necessary connections due to having a visual representation. We also had a good idea of which resources would own the data in the one-to-many fields.
 
-![](README/Screenshot%202020-11-17%20at%2013.07.50%203.png)
+![](README/Screenshot%202020-11-17%20at%2013.07.50%204.png)
 
 We followed up with a few wireframes for the main page components. These were mostly simple and ended up being a good representation of the final product, apart from the campaign view page which evolved a lot over time as we continued to add features later in the process.
 
@@ -47,7 +47,7 @@ Once we had the backend set up and the front end communicating with it we planne
 
 I wanted to use the Styled Components library in this project as the idea of including styling in components to make them modular was really appealing to me from a design point of view. The first component that I used it with was the chat message boxes - I wanted a simple layout of having a box with rounded corners, shadows and a small triangle attached to make it look like a speech bubble. Creating this in CSS was a bit trickier than I imagined, as the triangle (with clip-path) would not allow for a box-shadow. I got around this by making another triangle that was blurred and sat underneath to look like a shadow. In the image below you can see the final result, with a different style for the users own messages on the right.
 
-![](README/chat-boxes%202.png)
+![](README/chat-boxes%203.png)
 
 Next up was tackling the formatting of links in the chat. I intended to use RegEx to determine any links and then wrap them in an <a> tag. Finding the right RegEx was very quick after a short search, but transforming the string was not working as it should, with the formatted text displaying the tags rather than rendering them as HTML. I solved this by splitting the links out of the text and reinserting them as new anchor elements.
 
@@ -66,13 +66,13 @@ In the code below, the message content is first split where new lines occur and 
 
 I then wrote some code to scroll the window to any new messages and created the input component by building a custom text area and attaching a small toolbar along the bottom. The toolbar included a send button and later on an emoji button too. I wrote a small helper function for the chat input so that shift + enter would result in a new line and enter on its own would send the message.
 
-![](README/Screenshot%202020-11-19%20at%2013.47.13%202.png)
+![](README/Screenshot%202020-11-19%20at%2013.47.13%203.png)
 
 ### CREATING A STYLE WITH THEMES
 
 During the work on the chat component I had also been working on some styled inputs to be used across the app. As I was working on these things I had worked out a colour theme (yellow and light pink) and also picked out some alternatives for a dark mode.  This was a really fun feature to add in as I always enjoy its inclusion on websites that I use. The implementation using Styled Components was very straightforward too - I simply defined the variables for each theme in the root component (primary colour, background, accents, etc.) and then passed the information down to all child components using the Theme Provider.
 
-![](README/themes%202.gif)
+![](README/themes%203.gif)
 
 
 ### MAP FOR PROJECT DISCOVERY
@@ -123,13 +123,13 @@ The first element that I built was the user settings that could be accessed on a
 
 Having set the data on the users, I then pulled the data for all volunteers on a project into the coordinator view; this allowed me to display all of a users relevant data in a card format.
 
-![](README/user-card%202.png)
+![](README/user-card%203.png)
 
 As you can see in the image there is a select button on the cards. This allows the coordinator to select any number of users and then create a new chat room with them. This allowed for all of the desired functionality but I wanted to allow coordinators to find the relevant users in a simple manner.
 
 Using the same components that were designed for setting the schedule and skills on the profile page, I allowed the coordinators to select any number of time slots and skills in order to filter the user list. This also included functionality to filter using strict rules or not; this could be useful in the situation that they would want to find all volunteers available on the weekend without them each needing to be available on both days.
 
-![](README/volunteer-filter%204.gif)
+![](README/volunteer-filter%205.gif)
 
 Another element was added to the project view at this point for a community noticeboard. This is intended to display more important messages that would not be suited to chat due to new messages burying the information. The coordinator view of the page differed here only in showing the input for sending and deleting messages where the regular volunteer view would be read only.
 
