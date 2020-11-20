@@ -1,1 +1,1 @@
-web: gunicorn project.routing:application -k uvicorn.workers.UvicornWorker
+web: gunicorn -w 4 -k uvicorn.workers.UvicornWorker project.routing:application
