@@ -48,9 +48,9 @@ class App extends React.Component {
     }
   }
 
-  componentDidMount = () => {
+  componentDidMount = async () => {
     const userID = localStorage.getItem('user_id')
-    if (userID) this.getUser(userID)
+    if (userID) setTimeout(() => this.getUser(userID), 3000)
     // TODO get stored theme
   }
 
@@ -61,6 +61,7 @@ class App extends React.Component {
 
   getUser = async (id) => {
     const response = await getSingleProfile(id)
+    console.log(id, response)
     this.setState({ userData: response.data }, this.getUserCampaigns)
     this.showNotification(`welcome back ${response.data.username}`)
   }
@@ -74,6 +75,7 @@ class App extends React.Component {
   getUserCampaigns = () => {
     if (!this.state.userData) return
     const { owned_campaigns: owned, coord_campaigns: coord, conf_campaigns: volunteer } = this.state.userData
+    if (!owned || !coord || !volunteer) return
     const userCampaigns = [...owned, ...coord, ...volunteer]
       .map(campaign => ({ value: `/campaigns/${campaign.id}`, label: campaign.name }))
     this.setState({ userCampaigns })
