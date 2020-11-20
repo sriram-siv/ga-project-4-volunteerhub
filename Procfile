@@ -1,1 +1,2 @@
-web: gunicorn -w 4 -k uvicorn.workers.UvicornWorker --host 0.0.0.0 --port $PORT project.asgi
+web: daphne chat.asgi:channel_layer --port $PORT --bind 0.0.0.0 -v2
+chatworker: python manage.py runworker --settings=chat.settings -v2
