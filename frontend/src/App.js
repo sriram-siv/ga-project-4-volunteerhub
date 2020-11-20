@@ -50,7 +50,6 @@ class App extends React.Component {
 
   componentDidMount = async () => {
     const userID = localStorage.getItem('user_id')
-    // if (userID) setTimeout(() => this.getUser(userID), 3000)
     if (userID) this.getUser(userID)
     // TODO get stored theme
   }
