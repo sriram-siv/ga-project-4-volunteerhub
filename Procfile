@@ -1,1 +1,1 @@
-web: gunicorn -w 4 -k uvicorn.workers.UvicornWorker project.routing:application
+web: gunicorn project.routing:application -w 4 -k uvicorn.workers.UvicornWorker --port $PORT --host 0.0.0.0
