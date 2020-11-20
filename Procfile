@@ -1,1 +1,1 @@
-web: gunicorn project.wsgi -w 3 -k uvicorn.workers.UvicornWorker
+web: uvicorn project.wsgi --host 0.0.0.0 --port $PORT
