@@ -50,7 +50,8 @@ class App extends React.Component {
 
   componentDidMount = async () => {
     const userID = localStorage.getItem('user_id')
-    if (userID) setTimeout(() => this.getUser(userID), 3000)
+    // if (userID) setTimeout(() => this.getUser(userID), 3000)
+    if (userID) this.getUser(userID)
     // TODO get stored theme
   }
 
@@ -61,7 +62,6 @@ class App extends React.Component {
 
   getUser = async (id) => {
     const response = await getSingleProfile(id)
-    console.log(id, response)
     this.setState({ userData: response.data }, this.getUserCampaigns)
     this.showNotification(`welcome back ${response.data.username}`)
   }
