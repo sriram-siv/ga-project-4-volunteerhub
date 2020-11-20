@@ -1,1 +1,1 @@
-web: uvicorn project.wsgi
+web: gunicorn project.wsgi
