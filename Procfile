@@ -1,1 +1,1 @@
-web: gunicorn project.routing:application
+web: gunicorn project.asgi:application
