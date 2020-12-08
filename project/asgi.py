@@ -17,13 +17,15 @@ from channels.auth import AuthMiddlewareStack
 
 import chat_messages.routing
 
+application = get_asgi_application()
 
-application = ProtocolTypeRouter({
-    "http": get_asgi_application(),
-    # Just HTTP for now. (We can add other protocols later.)
-    'websocket': AuthMiddlewareStack(
-        URLRouter(
-            chat_messages.routing.websocket_urlpatterns
-        )
-    ),
-})
+
+# application = ProtocolTypeRouter({
+#     "http": get_asgi_application(),
+#     # Just HTTP for now. (We can add other protocols later.)
+#     'websocket': AuthMiddlewareStack(
+#         URLRouter(
+#             chat_messages.routing.websocket_urlpatterns
+#         )
+#     ),
+# })
