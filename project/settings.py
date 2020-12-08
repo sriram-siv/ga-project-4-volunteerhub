@@ -86,7 +86,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'project.wsgi.application'
-ASGI_APPLICATION = 'project.asgi.application'
+ASGI_APPLICATION = 'project.routing.application'
 
 CHANNEL_LAYERS = {}
 if str(os.getenv('ENVIRONMENT')) == 'development':
