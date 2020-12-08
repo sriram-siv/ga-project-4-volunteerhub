@@ -6,7 +6,7 @@ import BannerImage from '../elements/BannerImage'
 // import Button from '../elements/Button'
 import InputText from '../elements/InputText'
 import { SplitContain, SplitRow } from '../elements/Split'
-import { getSingleProfile, updateProfile, getAllSkills, updateProfileShifts, updateProfileSkills } from '../../lib/api'
+import { getSingleProfile, updateProfile, getAllSkills, updateProfileShifts, updateProfileSkills, repeatUntilSuccess } from '../../lib/api'
 import Schedule from '../elements/Schedule'
 
 import icons from '../../lib/icons'
@@ -116,7 +116,7 @@ class Profile extends React.Component {
   
   getProfile = async () => {
     const userID = localStorage.getItem('user_id')
-    const response = await getSingleProfile(userID)
+    const response = await repeatUntilSuccess(() => getSingleProfile(userID))
     
     const { username, first_name, last_name, email, phone, profile_image, user_skills } = response.data
     const userData = { username, first_name, last_name, email, phone, profile_image }
