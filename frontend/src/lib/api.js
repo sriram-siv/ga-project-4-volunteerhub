@@ -13,6 +13,19 @@ const withHeaders = () => {
   }
 }
 
+export const repeatUntilSuccess = async request => {
+  let response
+  while (!response.data) {
+    try {
+      response = await request()
+      console.log(response)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+  return response
+}
+
 export const registerUser = formData => axios.post(`${baseUrl}/auth/register/`, formData)
 
 export const loginUser = formData => axios.post(`${baseUrl}/auth/login/`, formData)
@@ -28,13 +41,7 @@ export const deleteProfile = profileId => axios.delete(`${baseUrlProfiles}/${pro
 
 export const createCampaign = formData => axios.post(`${baseUrlCampaigns}/`, formData, withHeaders())
 
-export const getAllCampaigns = async () => {
-  let response
-  while (!response) {
-    response = await axios.get(`${baseUrlCampaigns}/`)
-  }
-  return response
-}
+export const getAllCampaigns = async () => axios.get(`${baseUrlCampaigns}/`)
 
 export const getSingleCampaign = campaignId => axios.get(`${baseUrlCampaigns}/${campaignId}/`, withHeaders())
 

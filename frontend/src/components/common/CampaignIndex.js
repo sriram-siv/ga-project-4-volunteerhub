@@ -6,7 +6,7 @@ import Geocoder from '../map/Geocoder'
 import InputText from '../elements/InputText'
 import ResultsList from '../elements/ResultsList'
 
-import { getAllCampaigns, addPendVolunteer } from '../../lib/api'
+import { getAllCampaigns, addPendVolunteer, repeatUntilSuccess } from '../../lib/api'
 
 const Wrapper = styled.main`
   position: relative;
@@ -75,7 +75,8 @@ class CampaignIndex extends React.Component {
   }
 
   componentDidMount = async () => {
-    const response = await getAllCampaigns()
+    // const response = await getAllCampaigns()
+    const response = await repeatUntilSuccess(getAllCampaigns)
     const campaigns = response.data
     this.setState({ campaigns }, this.getResults)
     // while (!this.state.campaigns) {
