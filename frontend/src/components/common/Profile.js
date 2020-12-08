@@ -122,7 +122,9 @@ class Profile extends React.Component {
     const userData = { username, first_name, last_name, email, phone, profile_image }
     
     const schedule = [...this.state.formData.schedule]
-    response.data.user_shifts.forEach(shift => schedule[shift.id - 1] = true)
+    if (response.data.user_shifts) {
+      response.data.user_shifts.forEach(shift => schedule[shift.id - 1] = true)
+    }
     const formData = { user_skills, schedule }
     
     this.setState({ userData, pendingUserData: userData, formData }, () => console.log(this.state.formData)) 
