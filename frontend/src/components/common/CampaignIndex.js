@@ -75,10 +75,15 @@ class CampaignIndex extends React.Component {
   }
 
   componentDidMount = async () => {
-    const response = await getAllCampaigns()
-    console.log(response)
-    const campaigns = response.data
-    this.setState({ campaigns }, this.getResults)
+    while (!this.state.campaigns) {
+      try {
+        const response = await getAllCampaigns()
+        const campaigns = response.data
+        this.setState({ campaigns }, this.getResults)
+      } catch (err) {
+        console.log(err)
+      }
+    }
   }
 
   handleChange = event => {
