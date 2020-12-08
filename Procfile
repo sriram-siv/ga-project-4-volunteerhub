@@ -1,1 +1,1 @@
-web: uvicorn project.routing --workers 4
+web: uvicorn project.routing:application --workers 4
