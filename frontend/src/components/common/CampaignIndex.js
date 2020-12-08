@@ -76,6 +76,7 @@ class CampaignIndex extends React.Component {
 
   componentDidMount = async () => {
     const response = await getAllCampaigns()
+    console.log(response)
     const campaigns = response.data
     this.setState({ campaigns }, this.getResults)
   }
