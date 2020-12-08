@@ -1,1 +1,1 @@
-web: gunicorn project.routing
+web: uvicorn project.routing --workers 4
