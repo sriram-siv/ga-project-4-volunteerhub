@@ -1,1 +1,1 @@
-web: uvicorn project.routing:application --workers 4
+web: uvicorn project.routing:application --workers 4 --bind 0.0.0.0:$PORT
