@@ -1,1 +1,1 @@
-web: gunicorn -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:$PORT project.routing:application
+web: gunicorn -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:$PORT project.asgi:application
