@@ -159,7 +159,7 @@ class Profile extends React.Component {
   saveEdits = async () => {
     try {
       const userID = localStorage.getItem('user_id')
-      await updateProfile(userID, this.state.pendingUserData)
+      await repeatUntilSuccess(() => updateProfile(userID, this.state.pendingUserData))
       this.setState({ userData: this.state.pendingUserData })
       this.handleEditMode()
       this.props.app.showNotification('your profile has been updated')
@@ -174,7 +174,7 @@ class Profile extends React.Component {
   }
 
   getSkills = async () => {
-    const response = await getAllSkills()
+    const response = await repeatUntilSuccess(() => getAllSkills())
     const skills = response.data.map(skill => ({ value: skill.id, label: skill.name }))
     this.setState({ skills })
   }
@@ -198,9 +198,9 @@ class Profile extends React.Component {
     console.log( this.state.formData )
     try {
       const userID = localStorage.getItem('user_id')
-      const shiftResponse = await updateProfileShifts(userID, { 'schedule': this.state.formData.schedule })
+      const shiftResponse = await repeatUntilSuccess(() => updateProfileShifts(userID, { 'schedule': this.state.formData.schedule }))
       const skillIds = this.state.formData.user_skills.map(skill => skill.id)
-      const skillsResponse = await updateProfileSkills(userID, { 'user_skills': skillIds })
+      const skillsResponse = await repeatUntilSuccess(() => updateProfileSkills(userID, { 'user_skills': skillIds }))
       console.log(shiftResponse.data.message, skillsResponse.data.message)
       this.props.app.showNotification('your preferences have been updated')
     } catch (err) {
