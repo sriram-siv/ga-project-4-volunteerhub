@@ -75,19 +75,9 @@ class CampaignIndex extends React.Component {
   }
 
   componentDidMount = async () => {
-    const response = await getAllCampaigns()
-    // const response = await repeatUntilSuccess(getAllCampaigns)
+    const response = await repeatUntilSuccess(getAllCampaigns)
     const campaigns = response.data
     this.setState({ campaigns }, this.getResults)
-    // while (!this.state.campaigns) {
-    //   try {
-    //     const response = await getAllCampaigns()
-    //     const campaigns = response.data
-    //     this.setState({ campaigns }, this.getResults)
-    //   } catch (err) {
-    //     console.log(err)
-    //   }
-    // }
   }
 
   handleChange = event => {
@@ -138,7 +128,7 @@ class CampaignIndex extends React.Component {
       this.props.app.showNotification('please login to sign up')
       return
     }
-    await addPendVolunteer(id)
+    await repeatUntilSuccess(() => addPendVolunteer(id))
     this.setState({ showNotification: true })
   }
 

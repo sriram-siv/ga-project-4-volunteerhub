@@ -40,7 +40,7 @@ export const deleteProfile = profileId => axios.delete(`${baseUrlProfiles}/${pro
 
 export const createCampaign = formData => axios.post(`${baseUrlCampaigns}/`, formData, withHeaders())
 
-export const getAllCampaigns = async () => await repeatUntilSuccess(axios.get(`${baseUrlCampaigns}/`))
+export const getAllCampaigns = async () => axios.get(`${baseUrlCampaigns}/`)
 
 export const getSingleCampaign = campaignId => axios.get(`${baseUrlCampaigns}/${campaignId}/`, withHeaders())
 
