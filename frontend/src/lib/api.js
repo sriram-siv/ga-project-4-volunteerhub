@@ -15,7 +15,7 @@ const withHeaders = () => {
 
 export const repeatUntilSuccess = async request => {
   let response
-  while (!response.data) {
+  while (!response?.data) {
     try {
       response = await request()
       console.log(response)
